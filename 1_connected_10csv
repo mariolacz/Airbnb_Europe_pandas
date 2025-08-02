@@ -1,0 +1,14 @@
+import pandas as pd
+import os
+
+folder_path = "/Users/------/Desktop/AIRBNB_EUROPE"
+
+# find all csv files in file 
+csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
+
+# read and join
+df_list = [pd.read_csv(os.path.join(folder_path, file)) for file in csv_files]
+combined_df = pd.concat(df_list, ignore_index=True)
+
+# check results
+print("Number of rows", combined_df.shape[0])
